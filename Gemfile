@@ -37,6 +37,7 @@ gem 'devise'
 gem 'cocoon'
 gem 'wicked'
 gem 'simple_form'
+gem 'haml'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

@@ -1,0 +1,36 @@
+= simple_form_for @project do |f|
+  %h3 Email
+  = f.input :email
+  %h3 Basic Info
+  = f.input :first_name
+  = f.input :middle_name
+  = f.input :last_name
+  = f.input :website
+  = f.input :phone
+  = f.input :theme
+  = f.input :url
+  %h3 Work
+  #work_experiences
+    = f.simple_fields_for :work_experiences do |work_experience|
+      = render 'work_experience_fields', :f => work_experience
+    .links
+      = link_to_add_association 'add work_experience', f, :work_experiences
+  %h3 Tasks
+  #tasks
+    = f.simple_fields_for :educations do |education|
+      = render 'education_fields', :f => education
+    .links
+      = link_to_add_association 'add education', f, :educations
+  %h3 Tasks
+  #skills
+    = f.simple_fields_for :skills do |skill|
+      = render 'skill_fields', :f => skill
+    .links
+      = link_to_add_association 'add skill', f, :skills
+  %h3 Tasks
+  #references
+    = f.simple_fields_for :references do |reference|
+      = render 'reference_fields', :f => reference
+    .links
+      = link_to_add_association 'add reference', f, :references
+  = f.submit
