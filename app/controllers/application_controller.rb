@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
   
   def proj
-  	"Sexy Time"
+  	"Project"
   end
 
   helper_method :proj
