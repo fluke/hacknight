@@ -1,5 +1,5 @@
 class ResumesController < ApplicationController
-  before_action :check_user, except: [:new, :create, :show]
+  before_action :check_user, except: [:new, :create, :show, :random_json]
   before_action :set_resume, only: [:print, :show, :edit, :update, :destroy, :printcard, :qcard, :qcard_step2]
 
   # GET /resumes
@@ -19,9 +19,9 @@ class ResumesController < ApplicationController
   
   def random_json
     url = "http://vibeapp.co/api/v1/initial_data/?api_key=76afbf61d32bb6e035aa96407cfe7389&email=mercurialmercenary@gmail.com"
-   resp = Net::HTTP.get_response(URI.parse(url))
-   data = resp.body
-   @n = JSON.parse(data)
+    resp = ::Net::HTTP.get_response(URI.parse(url))
+    data = resp.body
+    @n = JSON.parse(data)
   end
 
   def qcard_step2
@@ -30,17 +30,33 @@ class ResumesController < ApplicationController
   end
   
   def printcard
-     @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://localhost:3000/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+    @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://localhost:3000/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
     render :layout => false
   end
   # GET /resumes/new
   def new
     @resume = Resume.new
+    @resume.user = current_user
+    url = "http://vibeapp.co/api/v1/initial_data/?api_key=76afbf61d32bb6e035aa96407cfe7389&email=#{current_user.email}"
+    resp = Net::HTTP.get_response(URI.parse(url))
+    data = resp.body
+    @vibe = JSON.parse(data)
+    @bio = @vibe["bio"]
+    @social = @vibe["social_profiles"]
+    @social.each do |hash|
+      case hash["typeId"]
+      when "twitter"
+        @twitter = hash["username"]
+        @bio = hash["bio"]
+      when "facebook"
+        @facebook = hash["url"].split('/').last
+      end
+    end
   end
 
-def print
-  render :layout => false
-end
+  def print
+    render :layout => false
+  end
 
   # GET /resumes/1/edit
   def edit
