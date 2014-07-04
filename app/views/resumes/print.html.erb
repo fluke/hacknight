@@ -1,4 +1,5 @@
-<% if @resume.theme == 1 %>
+ <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+ <% if @resume.theme == 1 %>
 <%= stylesheet_link_tag    "cvthemes/helvetica", media: "all" %>
 <%els if @resume.theme == 2 %>
 <%= stylesheet_link_tag    "cvthemes/opensans", media: "all" %>
@@ -80,5 +81,3 @@ References
 <br/>
 <%end%>
 </p>
-
-<%= render 'proceed_to_card' %>
