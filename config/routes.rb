@@ -1,6 +1,7 @@
 Hacknight::Application.routes.draw do
   get "dashboard/index", as: "dashboard"
   get "vibe/test", as: "test"
+  resources :resumes
   resources :resume_steps
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

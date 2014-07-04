@@ -11,7 +11,6 @@ class Resume < ActiveRecord::Base
 	has_many :extra_fields
 	accepts_nested_attributes_for :extra_fields, :reject_if => :all_blank, :allow_destroy => true
 	belongs_to :user
-	validates_presence_of :first_name, :email, :phone
 	validates :email,
             :format => {
               :with    => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i,
