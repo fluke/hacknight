@@ -5,9 +5,7 @@ Hacknight::Application.routes.draw do
   get "/resumes/:id/qcard", to: "resumes#qcard", as: "qcard_resume"
   get "/resumes/:id/card_print", to: "resumes#printcard", as: "card_print"
   get "/resumes/:id/print", to: "resumes#print", as: "print_resume"
-
   get 'random_json', to: "resumes#random_json", as: "random_json"
-  resources :resume_steps
   devise_for :users
   resources :resumes
   # The priority is based upon order of creation: first created -> highest priority.

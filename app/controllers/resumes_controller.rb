@@ -101,6 +101,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resume_params
-      params.require(:resume).permit(:first_name, :middle_name, :last_name, :email, :phone, :website, :theme, :url, :view_count, educations_attributes: [:id, :college, :degree, :start_duration, :end_duration, :description, :_destroy], references_attributes: [:id, :first_name, :middle_name, :last_name, :linked_in_url, :twitter_url, :description, :_destroy], skills_attributes: [:id, :description, :_destroy], work_experiences_attributes: [:id, :company, :position, :start_duration, :end_duration, :description, :_destroy], extra_fields_attributes: [:id, :field_name, :description, :_destroy])
+      params.require(:resume).permit(:first_name, :middle_name, :last_name, :email, :phone, :website, :theme, :url, :view_count, educations_attributes: [:id, :college, :degree, :start_duration, :end_duration, :description, :_destroy], references_attributes: [:id, :first_name, :middle_name, :last_name, :linked_in_url, :twitter_url, :description, :_destroy], skills_attributes: [:id, :description, :_destroy], work_experiences_attributes: [:id, :company, :position, :start_duration, :end_duration, :description, :_destroy], extra_fields_attributes: [:id, :field_name, :_destroy])
     end
 end
