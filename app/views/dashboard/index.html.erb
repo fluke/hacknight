@@ -1,2 +1,9 @@
 <h1>My <%= proj %> Dashboard</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+
+<%if @resume %>
+<%=link_to "#{@resume.first_name}" + "'s resume", @resume %>
+<br/>
+<%= @resume.view_count%> views.
+<%else%>
+<%=link_to "Create a new resume", new_resume_path %>
+<%end%> 

@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
   before_action :set_resume, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_user
   # GET /resumes
   # GET /resumes.json
   def index
@@ -62,6 +62,14 @@ class ResumesController < ApplicationController
   end
 
   private
+    def check_user
+      if @resume = current_user.resume
+      else
+        flash[:notice] = "This is not yours."
+        redirect_to root_path and return
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_resume
       @resume = Resume.find(params[:id])
