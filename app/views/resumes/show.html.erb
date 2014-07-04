@@ -7,86 +7,126 @@
 <%end%>
 
 <div class="container">
-	<div class="jumbotron resume-jumbo">
-		<h1>
-			<%= @resume.first_name %>  <%= @resume.middle_name %> <%= @resume.last_name %>
-		</h1>	
-		<div class="pull-right">
-			<p>
-			<%= @resume.email %> &middot; <%= @resume.phone %> &middot; <%= @resume.website %>
-			<br/>
-			</p>	
-		</div>	
-	</div>
-	
 	<div class="row">
-		<div class="col-md-6">	
-		<h2>
-			Work experience
-		</h2>
-		<hr>
+        <div class="col-xs-12">
+          <div id="photo-header" class="text-center">
+            <!-- PHOTO (AVATAR) -->
+            <div id="photo">
+              <img src="img/avatar.jpg" alt="avatar">
+            </div>
+            <div id="text-header">
+              <h1>Hello,<br> my name is <span><%= @resume.first_name %> <%= @resume.middle_name %> <%= @resume.last_name %></span></h1>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-7">
+          <!-- ABOUT ME -->
+          <div class="box">
+            <h2>About Me</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, non, dolorem, cumque distinctio magni quam expedita velit laborum sunt amet facere tempora ut fuga aliquam ad asperiores voluptatem dolorum! Quasi.</p>
+          </div>
+          <!-- EDUCATION -->
+          <div class="box">
+            <h2>Education</h2>
+            <ul id="education" class="clearfix">
+              <% @resume.educations.each do |w| %>	
+              <li>
+                <div class="year pull-left">1990</div>
+                <div class="description pull-right">
+                  <h3><%= w.degree %> at <%= w.college %></h3>
+                  <p><%= w.start_duration %> - <%= w.end_duration %>
+					<br/>
+					<%= w.description %>
+				  </p>
+                </div>
+              </li>
+              <%end%>
+            </ul>
+          </div>
+          <!-- end education-->
+
+          <!-- EXPERIENCES -->
+          <div class="box">
+            <h2>Experiences</h2>
+            <% @resume.work_experiences.each do |w| %>
+            <div class="job clearfix">
+              <div class="col-xs-3">
+                <div class="where"><%= w.company %></div>
+                <div class="year"><%= w.start_duration %> - <%= w.end_duration %></div>
+              </div>
+              <div class="col-xs-9">
+                <div class="profession"><%= w.position %></div>
+                <div class="description"> <%= w.description %> </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <!-- end experiences -->
+
+        <div class="col-xs-12 col-sm-5">
+          <!-- CONTACT -->
+          <div class="box clearfix">
+            <h2>Contact</h2>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-phone fa-fw"></span></div>
+              <div class="title only pull-right"><%= @resume.phone %></div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-envelope fa-fw"></span></div>
+              <div class="title only pull-right"><%= @resume.email %></div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-twitter fa-fw"></span></div>
+              <div class="title only pull-right"><a href="https://twitter.com/WordPress">Twitter</a></div>
+            </div>
+            <div class="contact-item">
+              <div class="icon pull-left text-center"><span class="fa fa-facebook fa-fw"></span></div>
+              <div class="title only pull-right"><a href="https://in.linkedin.com/abhinavchhikara">LinkedIn</a></div>
+            </div>
+          </div>
+
+          <!-- SKILLS -->
+          <div class="box">
+            <h2>Skills</h2>
+            <div class="skills">
+              <% @resume.skills.each do |s| %>	
+              <div class="item-skills" data-percent="1.00"><%= s.description %></div>
+              <%end%>
+            </div>
+          </div>
+
+          
+    </div>
+    <div class="box">
+          	<h2>References</h2>
 			<p>
-				<% @resume.work_experiences.each do |w| %>
-				<strong><%= w.position %></strong> at <%= w.company %>
+				<% @resume.references.each do |w| %>
+				<%= w.first_name %>
+				<%= w.middle_name %>
+				<%= w.last_name %>
 				<br/>
-				<%= w.start_duration %> - <%= w.end_duration %>
+				<%= w.linked_in_url %>
+				<br/>
+				<%= w.twitter_url %>
 				<br/>
 				<%= w.description %>
 				<br/>
 				<br/>
 				<%end%>
 			</p>
-		</div>
-
-		<div class="col-md-6">
-		<h2>
-			Education Information
-		</h2>
-		<hr>
-		<p>
-			<% @resume.educations.each do |w| %>
-			<strong><%= w.degree %></strong> at <%= w.college %>
-			<br/>
-			<%= w.start_duration %> - <%= w.end_duration %>
-			<br/>
-			<%= w.description %>
-			<br/>
-			<br/>
-			<%end%>
-		</p>	
-		</div>
-	</div>	
-
-	</br>
-	<h2>
-		Skills and Qualifications
-	</h2>
-	<hr>
-	<% @resume.skills.each do |s| %>
-	<p>
-	<%= s.description %>
-	</p>
-	<%end%>
-	<br/>
+          </div>
+</div>
 
 
-<h2>
-References
-</h2>
-<p>
-<% @resume.references.each do |w| %>
-<%= w.first_name %>
-<%= w.middle_name %>
-<%= w.last_name %>
-<br/>
-<%= w.linked_in_url %>
-<br/>
-<%= w.twitter_url %>
-<br/>
-<%= w.description %>
-<br/>
-<br/>
-<%end%>
-</p>
+	
 
+
+
+</br></br></br></br></br></br>
+<div class="container">
 <%= render 'proceed_to_card' %>
+</div>
