@@ -1,0 +1,84 @@
+<% if @resume.theme == 1 %>
+<%= stylesheet_link_tag    "cvthemes/helvetica", media: "all" %>
+<%els if @resume.theme == 2 %>
+<%= stylesheet_link_tag    "cvthemes/opensans", media: "all" %>
+<%els if @resume.theme ==3 %>
+<%= stylesheet_link_tag    "cvthemes/print", media: "all" %>
+<%end%>
+
+<h1>
+<%= @resume.first_name %>  <%= @resume.middle_name %> <%= @resume.last_name %>
+</h1>
+
+<p>
+<%= @resume.email %>
+<br/>
+<%= @resume.phone %>
+<br/>
+<%= @resume.website %>
+<br/>
+</p>
+
+<h1>
+Work experience
+</h1>
+<p>
+<% @resume.work_experiences.each do |w| %>
+<%= w.position %>
+<br/>
+<%= w.start_duration %> - <%= w.end_duration %>
+<br/>
+<%= w.company %>
+<br/>
+<%= w.description %>
+<br/>
+<br/>
+<%end%>
+</p>
+
+<h1>
+Education Information
+</h1>
+<p>
+<% @resume.educations.each do |w| %>
+<%= w.college %>
+<br/>
+<%= w.start_duration %> - <%= w.end_duration %>
+<br/>
+<%= w.degree %>
+<br/>
+<%= w.description %>
+<br/>
+<br/>
+<%end%>
+
+
+<h1>
+Skills and Qualifications
+</h1>
+<% @resume.skills.each do |s| %>
+<%= s.description %>
+<br/>
+<br/>
+<%end%>
+
+<h1>
+References
+</h1>
+<p>
+<% @resume.references.each do |w| %>
+<%= w.first_name %>
+<br/>
+<%= w.middle_name %>
+<br/>
+<%= w.last_name %>
+<br/>
+<%= w.linked_in_url %>
+<br/>
+<%= w.twitter_url %>
+<br/>
+<%= w.description %>
+<br/>
+<br/>
+<%end%>
+</p>
