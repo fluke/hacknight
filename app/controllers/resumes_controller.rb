@@ -37,6 +37,7 @@ class ResumesController < ApplicationController
   def new
     @resume = Resume.new
     @resume.user = current_user
+    @resume.view_count = 0
     url = "http://vibeapp.co/api/v1/initial_data/?api_key=76afbf61d32bb6e035aa96407cfe7389&email=#{current_user.email}"
     resp = Net::HTTP.get_response(URI.parse(url))
     data = resp.body
