@@ -2,6 +2,7 @@ class ResumesController < ApplicationController
   before_action :check_user, except: [:new, :create, :show]
   before_action :set_resume, only: [:print, :show, :edit, :update, :destroy, :printcard, :qcard, :qcard_step2]
 
+
   # GET /resumes
   # GET /resumes.json
   def index
@@ -11,6 +12,7 @@ class ResumesController < ApplicationController
   # GET /resumes/1
   # GET /resumes/1.json
   def show
+    render layout: "resume1"
  #@resume.view_count ++
   end
   
