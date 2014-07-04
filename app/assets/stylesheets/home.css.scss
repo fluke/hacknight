@@ -20,12 +20,21 @@ h1 {
 	font-weight: 200;
 	margin-bottom: 30px;
 }
-h2, h3 {
+h3 {
 	font-size: 1.25em;
 	color: #5f5d60;
 	margin-bottom: 16px;
 	margin-top: 0;
 }
+
+h2{
+	font-size: 1.5em;
+	color: #5f5d60;
+	margin-bottom: 16px;
+	margin-top: 0;
+	font-weight: 200;
+}
+
 p {
 	color: #b3aeb5;
 	line-height: 1.7;
@@ -75,48 +84,6 @@ strong {
 /* Layout
 ================================= */
 
-hr {
-	margin-bottom: 58px;
-}
-.ft {
-	margin-bottom: 72px;
-	background-color: #f7f8fa;
-}
-.ft-copy {
-	padding-top: 32px;
-}
-.ft-copy p,
-.copy-offset { 
-	width: 88%;
-}
-.panel {
-	background-image: url('../img/form-panel-bg.png');
-	background-repeat: repeat-x;
-	border-bottom: solid 1px #eee;
-	padding: 42px 0;
-	margin: 80px 0 132px 0;
-}
-.callout {
-	padding: 35px 0;
-	margin-top: 64px;
-	text-align: center;
-	border: 1px solid #e3e3e3;
-	border-right: none;
-	border-left: none;
-}
-.callout .glyphicon {
-	margin-left: 10px;
-}
-.teacher-desc strong {
-	display: block;
-}
-.th-copy {
-	padding-top: 30px;
-}
-
-.container{
-	width:1170px;
-}
 
 body{
 
