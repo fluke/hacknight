@@ -1,22 +1,24 @@
 = simple_form_for @resume do |f|
   %h3 Email
-  = f.input :first_name
+  = f.input :email, input_html: { value: @vibe["email"] }
   %h3 Basic Info
-  = f.input :first_name
-  = f.input :middle_name
-  = f.input :last_name
-  = f.input :website
+  = f.input :first_name, input_html: { value: @vibe["name"].split(' ').first }
+  = f.input :middle_name, input_html: { value: @vibe["name"].split(' ').count == 3 ? @vibe["name"].split(' ').second : "" }
+  = f.input :last_name, input_html: { value: @vibe["name"].split(' ').count > 1 ? @vibe["name"].split(' ').last : "" }
+  = f.input :website, input_html: { value: @vibe["websites"][0]["url"] }
   = f.input :phone
-  = f.input :theme
-  = f.input :url
+  = f.input :bio, input_html: { value: @bio }
+  %h3 Social
+  = f.input :twitter_username, input_html: { value: @twitter }
+  = f.input :facebook_url, input_html: { value: @facebook }
   %h3 Work
   #work_experiences
     = f.simple_fields_for :work_experiences do |work_experience|
       = render 'work_experience_fields', :f => work_experience
     .links
       = link_to_add_association 'add work_experience', f, :work_experiences
-  %h3 Tasks
-  #tasks
+  %h3 Education
+  #educations
     = f.simple_fields_for :educations do |education|
       = render 'education_fields', :f => education
     .links
