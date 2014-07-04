@@ -1,6 +1,6 @@
 = simple_form_for @resume do |f|
   %h3 Email
-  = f.input :first_name
+  = f.input :email
   %h3 Basic Info
   = f.input :first_name
   = f.input :middle_name
@@ -15,19 +15,19 @@
       = render 'work_experience_fields', :f => work_experience
     .links
       = link_to_add_association 'add work_experience', f, :work_experiences
-  %h3 Tasks
-  #tasks
+  %h3 Education
+  #educations
     = f.simple_fields_for :educations do |education|
       = render 'education_fields', :f => education
     .links
       = link_to_add_association 'add education', f, :educations
-  %h3 Tasks
+  %h3 Skills
   #skills
     = f.simple_fields_for :skills do |skill|
       = render 'skill_fields', :f => skill
     .links
       = link_to_add_association 'add skill', f, :skills
-  %h3 Tasks
+  %h3 References
   #references
     = f.simple_fields_for :references do |reference|
       = render 'reference_fields', :f => reference
