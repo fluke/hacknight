@@ -4,6 +4,12 @@
 <%=link_to "#{@resume.first_name}" + "'s resume", @resume %>
 <br/>
 <%= @resume.view_count%> views.
+<br/>
+<%= link_to "Edit this", edit_resume_path(@resume) %>
+<br/>
+<%= link_to "Delete this", resume_path(@resume), method: :delete %>
+<br/>
+<%= link_to "Print this", print_resume_path(@resume) %>
 <%else%>
 <%=link_to "Create a new resume", new_resume_path %>
 <%end%> 

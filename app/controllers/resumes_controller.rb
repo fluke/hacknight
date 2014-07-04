@@ -1,6 +1,7 @@
 class ResumesController < ApplicationController
-  before_action :set_resume, only: [:show, :edit, :update, :destroy]
-  before_action :check_user
+  before_action :check_user, except: [:new, :create, :show]
+  before_action :set_resume, only: [:print, :show, :edit, :update, :destroy, :printcard, :qcard, :qcard_step2]
+
   # GET /resumes
   # GET /resumes.json
   def index
@@ -10,12 +11,36 @@ class ResumesController < ApplicationController
   # GET /resumes/1
   # GET /resumes/1.json
   def show
+ #@resume.view_count ++
+  end
+  
+  def qcard
+  end
+  
+  def random_json
+    url = "http://vibeapp.co/api/v1/initial_data/?api_key=76afbf61d32bb6e035aa96407cfe7389&email=mercurialmercenary@gmail.com"
+   resp = Net::HTTP.get_response(URI.parse(url))
+   data = resp.body
+   @n = JSON.parse(data)
   end
 
+  def qcard_step2
+    @theme = params[:theme]
+    @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://localhost:3000/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+  end
+  
+  def printcard
+     @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://localhost:3000/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+    render :layout => false
+  end
   # GET /resumes/new
   def new
     @resume = Resume.new
   end
+
+def print
+  render :layout => false
+end
 
   # GET /resumes/1/edit
   def edit
@@ -77,6 +102,6 @@ class ResumesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resume_params
-      params.require(:resume).permit(:first_name, :middle_name, :last_name, :email, :phone, :website, :theme, :url, :view_count, educations_attributes: [:id, :college, :degree, :start_duration, :end_duration, :description, :_destroy], references_attributes: [:id, :first_name, :middle_name, :last_name, :linked_in_url, :twitter_url, :description, :_destroy], skills_attributes: [:id, :description, :_destroy], work_experiences_attributes: [:id, :company, :position, :start_duration, :end_duration, :description, :_destroy], extra_fields_attributes: [:id, :field_name, :description, :_destroy])
+      params.require(:resume).permit(:first_name, :middle_name, :last_name, :email, :phone, :website, :theme, :url, :view_count, educations_attributes: [:id, :college, :degree, :start_duration, :end_duration, :description, :_destroy], references_attributes: [:id, :first_name, :middle_name, :last_name, :linked_in_url, :twitter_url, :description, :_destroy], skills_attributes: [:id, :description, :_destroy], work_experiences_attributes: [:id, :company, :position, :start_duration, :end_duration, :description, :_destroy], extra_fields_attributes: [:id, :field_name, :_destroy])
     end
 end

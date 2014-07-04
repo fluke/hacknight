@@ -69,25 +69,24 @@
 	<%end%>
 	<br/>
 
-	<h2>
-		References
-	</h1>
-	<hr>
-	<p>
-	<% @resume.references.each do |w| %>
-	<%= w.first_name %>
-	<br/>
-	<%= w.middle_name %>
-	<br/>
-	<%= w.last_name %>
-	<br/>
-	<%= w.linked_in_url %>
-	<br/>
-	<%= w.twitter_url %>
-	<br/>
-	<%= w.description %>
-	<br/>
-	<br/>
-	<%end%>
-	</p>
-</div>	
+
+<h2>
+References
+</h2>
+<p>
+<% @resume.references.each do |w| %>
+<%= w.first_name %>
+<%= w.middle_name %>
+<%= w.last_name %>
+<br/>
+<%= w.linked_in_url %>
+<br/>
+<%= w.twitter_url %>
+<br/>
+<%= w.description %>
+<br/>
+<br/>
+<%end%>
+</p>
+
+<%= render 'proceed_to_card' %>
