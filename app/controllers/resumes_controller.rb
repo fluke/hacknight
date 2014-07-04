@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
   before_action :set_resume, only: [:show, :edit, :update, :destroy]
-  before_action :check_user
+  before_action :check_user, except: [:new, :create]
   # GET /resumes
   # GET /resumes.json
   def index
