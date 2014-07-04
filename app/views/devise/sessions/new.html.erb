@@ -1,15 +1,73 @@
-<h2>Sign in</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+<div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+        	<h2>Sign in</h2>
+			<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			<div class="panel panel-default">
+			                <div class="panel-heading"> <strong class="">Login to view your resume</strong>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
-  </div>
-<% end %>
+			                </div>
+			  <div class="panel-body">              
+				  <div class="form-inputs">
+				    <%= f.input :email, required: false, autofocus: true, style: "text-align:center" %>
+				    <%= f.input :password, required: false %>
+				    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+				  </div>
 
-<%= render "devise/shared/links" %>
+				  <div class="form-actions">
+				    <%= f.button :submit, "Sign in" %>
+				  </div>
+				<% end %>
+
+				<%= render "devise/shared/links" %>
+				</div>
+			</div>
+		</div>
+</div>
+
+<!--
+<div class="container-fluid vcenter">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"> <strong class="">Login to view your resume</strong>
+
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="login" class="col-sm-3 control-label">Login</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="login" placeholder="Login" required="" type="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="inputPassword3" placeholder="Password" required="" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <div class="checkbox">
+                    <label class="">
+                      <input class="" type="checkbox">Remember me</label>
+                  </div>
+                </div>
+              </div>
+                        <div class="form-group last">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-success btn-sm">Sign in</button>
+                                <button type="reset" class="btn btn-default btn-sm">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">{{login_text}}</div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+
