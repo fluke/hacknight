@@ -1,0 +1,26 @@
+Theme selected was <%= @theme %>
+
+
+<h1> FRONT </h1>
+<div class ="card jumbotron", style = "width:300px; margin:0 auto;">
+<h3>
+<%= @resume.first_name %>  <%= @resume.middle_name %> <%= @resume.last_name %>
+</h3>
+<p>
+<%= @resume.email %>
+<br/>
+<%= @resume.phone %>
+<br/>
+<%= @resume.website %>
+<br/>
+</p>
+</div>
+
+<h1> BACK </h1>
+<div class ="card jumbotron", style = "width:300px; margin:0 auto;">
+<%=image_tag @qr %>
+<br/>
+
+</div>
+
+<h1> <%= link_to "Okay, print me!", card_print_path(@resume) %>

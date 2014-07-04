@@ -1,0 +1,9 @@
+<h1>Create my qCard</h1>
+
+<h2>Choose a theme</h2>
+
+
+<%= form_tag qcard_step2_path , :method => 'get', :id => "gs" do %>
+<%= select_tag "theme", "<option>Bold</option><option>Classy</option>".html_safe, name: "theme" %>
+<%= submit_tag "Go!" %>
+<% end %>

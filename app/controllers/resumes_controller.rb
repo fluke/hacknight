@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
-  before_action :set_resume, only: [:show, :edit, :update, :destroy]
-  before_action :check_user
+  before_action :set_resume, only: [:print, :show, :edit, :update, :destroy, :printcard, :qcard, :qcard_step2]
+  before_action :check_user, except: [:show]
   # GET /resumes
   # GET /resumes.json
   def index
@@ -10,12 +10,36 @@ class ResumesController < ApplicationController
   # GET /resumes/1
   # GET /resumes/1.json
   def show
+ #@resume.view_count ++
+  end
+  
+  def qcard
+  end
+  
+  def random_json
+    url = "http://vibeapp.co/api/v1/initial_data/?api_key=76afbf61d32bb6e035aa96407cfe7389&email=mercurialmercenary@gmail.com"
+   resp = Net::HTTP.get_response(URI.parse(url))
+   data = resp.body
+   @n = JSON.parse(data)
   end
 
+  def qcard_step2
+    @theme = params[:theme]
+    @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://localhost:3000/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+  end
+  
+  def printcard
+     @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://localhost:3000/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+    render :layout => false
+  end
   # GET /resumes/new
   def new
     @resume = Resume.new
   end
+
+def print
+  render :layout => false
+end
 
   # GET /resumes/1/edit
   def edit
