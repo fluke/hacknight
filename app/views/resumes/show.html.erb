@@ -6,79 +6,88 @@
 <%= stylesheet_link_tag    "cvthemes/print", media: "all" %>
 <%end%>
 
-<h1>
-<%= @resume.first_name %>  <%= @resume.middle_name %> <%= @resume.last_name %>
-</h1>
+<div class="container">
+	<div class="jumbotron resume-jumbo">
+		<h1>
+			<%= @resume.first_name %>  <%= @resume.middle_name %> <%= @resume.last_name %>
+		</h1>	
+		<div class="pull-right">
+			<p>
+			<%= @resume.email %> &middot; <%= @resume.phone %> &middot; <%= @resume.website %>
+			<br/>
+			</p>	
+		</div>	
+	</div>
+	
+	<div class="row">
+		<div class="col-md-6">	
+		<h2>
+			Work experience
+		</h2>
+		<hr>
+			<p>
+				<% @resume.work_experiences.each do |w| %>
+				<strong><%= w.position %></strong> at <%= w.company %>
+				<br/>
+				<%= w.start_duration %> - <%= w.end_duration %>
+				<br/>
+				<%= w.description %>
+				<br/>
+				<br/>
+				<%end%>
+			</p>
+		</div>
 
-<p>
-<%= @resume.email %>
-<br/>
-<%= @resume.phone %>
-<br/>
-<%= @resume.website %>
-<br/>
-</p>
+		<div class="col-md-6">
+		<h2>
+			Education Information
+		</h2>
+		<hr>
+		<p>
+			<% @resume.educations.each do |w| %>
+			<strong><%= w.degree %></strong> at <%= w.college %>
+			<br/>
+			<%= w.start_duration %> - <%= w.end_duration %>
+			<br/>
+			<%= w.description %>
+			<br/>
+			<br/>
+			<%end%>
+		</p>	
+		</div>
+	</div>	
 
-<h1>
-Work experience
-</h1>
-<p>
-<% @resume.work_experiences.each do |w| %>
-<%= w.position %>
-<br/>
-<%= w.start_duration %> - <%= w.end_duration %>
-<br/>
-<%= w.company %>
-<br/>
-<%= w.description %>
-<br/>
-<br/>
-<%end%>
-</p>
+	</br>
+	<h2>
+		Skills and Qualifications
+	</h2>
+	<hr>
+	<% @resume.skills.each do |s| %>
+	<p>
+	<%= s.description %>
+	</p>
+	<%end%>
+	<br/>
 
-<h1>
-Education Information
-</h1>
-<p>
-<% @resume.educations.each do |w| %>
-<%= w.college %>
-<br/>
-<%= w.start_duration %> - <%= w.end_duration %>
-<br/>
-<%= w.degree %>
-<br/>
-<%= w.description %>
-<br/>
-<br/>
-<%end%>
-
-
-<h1>
-Skills and Qualifications
-</h1>
-<% @resume.skills.each do |s| %>
-<%= s.description %>
-<br/>
-<br/>
-<%end%>
-
-<h1>
-References
-</h1>
-<p>
-<% @resume.references.each do |w| %>
-<%= w.first_name %>
-<br/>
-<%= w.middle_name %>
-<br/>
-<%= w.last_name %>
-<br/>
-<%= w.linked_in_url %>
-<br/>
-<%= w.twitter_url %>
-<br/>
-<%= w.description %>
-<br/>
-<br/>
-<%end%>
-</p>
+	<h2>
+		References
+	</h1>
+	<hr>
+	<p>
+	<% @resume.references.each do |w| %>
+	<%= w.first_name %>
+	<br/>
+	<%= w.middle_name %>
+	<br/>
+	<%= w.last_name %>
+	<br/>
+	<%= w.linked_in_url %>
+	<br/>
+	<%= w.twitter_url %>
+	<br/>
+	<%= w.description %>
+	<br/>
+	<br/>
+	<%end%>
+	</p>
+</div>	
