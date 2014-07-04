@@ -1,15 +1,27 @@
-<h1>My <%= proj %> Dashboard</h1>
+<h1 style="text-align:center; margin-top:100px;">My <%= proj %> Dashboard</h1>
 
 <%if @resume %>
-<%=link_to "#{@resume.first_name}" + "'s resume", @resume %>
+<h2 style="text-align:center;">
+<%=link_to "#{@resume.first_name}" + "'s resume", @resume %>(<%= @resume.view_count%> views)
+</h2>
+
 <br/>
-<%= @resume.view_count%> views.
+<div class="col-md-12 text-center center-block"> 
+<div class="pad">
 <br/>
-<%= link_to "Edit this", edit_resume_path(@resume) %>
+<%= link_to "Edit this", edit_resume_path(@resume), class: "btn btn-large btn-primary" %>
 <br/>
-<%= link_to "Delete this", resume_path(@resume), method: :delete %>
+<%= link_to "Delete this", resume_path(@resume), method: :delete, class: "btn btn-large btn-danger" %>
 <br/>
-<%= link_to "Print this", print_resume_path(@resume) %>
+<%= link_to "Print this", print_resume_path(@resume), class: "btn btn-large btn-success" %>
+</div>
+</div>
 <%else%>
-<%=link_to "Create a new resume", new_resume_path %>
+<div class="pad">
+<br/>
+<br/>
+<p style="text-align:center;">You don't have a resume yet.</p>
+<br/>
+<%=link_to "Create a new resume", new_resume_path, class:"btn btn-large btn-success text-center center-block" %>
+</div>
 <%end%> 

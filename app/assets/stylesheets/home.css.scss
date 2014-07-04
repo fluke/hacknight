@@ -106,7 +106,10 @@ body{
 	bottom: 3px;
 }
 
-
+.larger-pad
+{
+	width:400px !important;
+}
 /* Buttons
 ================================= */
 
@@ -130,16 +133,33 @@ body{
 	border-color: #ccc;
 }
 .btn-success {
-	box-shadow: 0 3px 0 #23812f;
-	text-shadow: 0 1px 1px rgba(0,0,0,.3);
-	font-size: 1.5em;
-	width: 330px;
+
 	padding: 15px 0;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	box-shadow: 0 3px 0 #23812f;
 }
 
+.btn
+{
+	
+	font-size: 1.5em;
+	width: 230px;
+	margin-bottom:20px;
+}
 /* Jumbotron
 ================================= */
 
+.pad
+{
+    width:300px;
+    margin:0 auto;
+	border-radius:3px;
+	background-color:white;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+	min-height:250px;
+	padding:5px;
+
+}
 .jumbotron {
 	background-image: url('../img/main-bg.png');
 	background-repeat: no-repeat;

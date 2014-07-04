@@ -1,7 +1,12 @@
-<h1>Looks fine? <br/>
-<%=link_to "Create my qCard", qcard_resume_path(@resume) %>
-</h1>
+<div class="pad" style="width:100%; padding:10px; background-color:rgba(255,255,255,0.3); border-top:1px solid #c0c0c0; position:fixed; bottom:0; text-align:center;">
+<h2>Looks fine? <br/>
+<%=link_to "Proceed to create my qCard", qcard_resume_path(@resume), class: "btn btn-large btn-success", style: "padding: 15px 20px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	box-shadow: 0 3px 0 #23812f;" %>
+</h2>
 
-<h1> Share URL </h1>
+<h2> Share URL </h2>
 www.qcard.com/resumes/<%= @resume.id %>
-
+<br/>
+<br/>
+</div>

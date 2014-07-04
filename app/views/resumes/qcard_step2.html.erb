@@ -1,8 +1,11 @@
-Theme selected was <%= @theme %>
 
 
-<h1> FRONT </h1>
-<div class ="card jumbotron", style = "width:300px; margin:0 auto;">
+<br/>
+
+<br/>
+<div class="pad larger-pad" style="padding-bottom:20px;">
+<h1 class="text-center"> Front </h1>
+<div class ="card ", style = "width:300px; border:1px solid #c0c0c0; padding:10px; margin:0 auto; height:190px;">
 <h3>
 <%= @resume.first_name %>  <%= @resume.middle_name %> <%= @resume.last_name %>
 </h3>
@@ -15,12 +18,17 @@ Theme selected was <%= @theme %>
 <br/>
 </p>
 </div>
-
-<h1> BACK </h1>
-<div class ="card jumbotron", style = "width:300px; margin:0 auto;">
-<%=image_tag @qr %>
-<br/>
-
 </div>
-
-<h1> <%= link_to "Okay, print me!", card_print_path(@resume) %>
+<br/>
+<div class="pad larger-pad" style="padding-bottom:20px;">
+<h1 class="text-center"> Back </h1>
+<div class ="card", style = "width:300px; border:1px solid #c0c0c0; padding:10px; margin:0 auto; height:190px;">
+<%=image_tag @qr, style:"margin:20px auto 0px auto; display:block;" %>
+<br/>
+</div>
+</div>
+<br/>
+<br/>
+ <%= link_to "Okay, print me!", card_print_path(@resume), class:"btn btn-success text-center center-block" %>
+ <br/>
+ <br/>

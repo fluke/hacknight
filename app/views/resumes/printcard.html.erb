@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-<div class ="card jumbotron", style = "width:300px; margin:0 auto;">
+<div class ="card", style = "width:300px; background-color:white; padding:10px; margin:0 auto; height:190px;">
 <h3>
 <%= @resume.first_name %>  <%= @resume.middle_name %> <%= @resume.last_name %>
 </h3>
@@ -12,9 +12,9 @@
 <br/>
 </p>
 </div>
-<div class ="card jumbotron", style = "width:300px; margin:0 auto;">
+<div class ="card", style = "background-color:white; width:300px; padding:10px; margin:0 auto; height:190px;">
 
-<%=image_tag @qr %>
+<%=image_tag @qr, style:"margin:20px auto 0px auto; display:block;" %>
 
 <br/>
 </p>
