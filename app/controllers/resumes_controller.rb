@@ -50,6 +50,7 @@ hash = Digest::MD5.hexdigest(email_address)
     @resume.user = current_user
 
     email_address = current_user.email.downcase
+
     # create the md5 hash
     hash = Digest::MD5.hexdigest(email_address)
     @gravatar = "http://www.gravatar.com/avatar/#{hash}"
