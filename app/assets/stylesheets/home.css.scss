@@ -168,7 +168,6 @@ body{
 
 .btn-default {
 	border-width: 2px;
-	border-color: inherit;
 	margin-right: 10px;
 	padding: 12px 22px;
 }
@@ -176,7 +175,6 @@ body{
 	box-shadow: none;
 }
 .panel .btn-default:hover {
-	border-color: #ccc;
 }
 .btn-success {
 	padding: 15px 0;
@@ -221,13 +219,15 @@ body
 ================================= */
 
 .main-logo {
-	width: 124px;
-	/*height: 40px;*/
-	margin-top: 22px;
+	width: 496px;
+	height: 120px;
+	margin-left: auto;
+	margin-right: auto;
+	/*margin-top: 22px;*/
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
-	background: url('../assets/images/main-logo.png') no-repeat;
+	background: image-url("main-logo.png") no-repeat;
 	background-size: 100%;
 }
 
