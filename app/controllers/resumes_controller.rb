@@ -26,6 +26,7 @@ class ResumesController < ApplicationController
       data = resp.body
       vibe = JSON.parse(data)
       social = vibe["social_profiles"]
+      if social
       social.each do |s|
        if s["typeId"] == "twitter"
           v.twitter_url = s["username"]
@@ -35,6 +36,7 @@ class ResumesController < ApplicationController
       end
        v.save
     end
+  end
   end
 
   respond_to do |format|

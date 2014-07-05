@@ -6,6 +6,7 @@
 <%= stylesheet_link_tag    "cvthemes/print", media: "all" %>
 <%end%>
 <% @resume.references.each do |w| %>
+ <%if w.email %>
   <div id="<%= w.email.split('@').first %>" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -24,7 +25,7 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 <% end %>
-
+<%end%>
 
 <div class="container">
 	<div class="row">
@@ -124,10 +125,12 @@
           <div class="box">
           	<h2>References</h2>
 			      <p><% @resume.references.each do |w| %>
+             <%if w.email %>
 				      <a data-toggle="modal" data-target="#<%= w.email.split('@').first %>">
                 <b><%= w.first_name %> <%= w.middle_name %> <%= w.last_name %></b>
                 <br/>
               </a>
+              <%end%>
 				    <%end%></p>
     </div>
   </div>
