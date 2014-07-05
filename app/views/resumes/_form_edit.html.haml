@@ -1,0 +1,39 @@
+= simple_form_for @resume, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f|
+  %h3.page-title Email
+  = f.input :email, input_html: { value: @vibe["email"] }
+  %h3.page-title Basic Info
+  = f.input :first_name, input_html: { value: @name.split(' ').first }
+  = f.input :middle_name, input_html: { value: @name.split(' ').count == 3 ? @name.split(' ').second : "" }
+  = f.input :last_name, input_html: { value: @name.split(' ').count > 1 ? @name.split(' ').last : "" }
+  = f.input :website, input_html: { value: @website }
+  = f.input :phone
+  = f.input :bio, input_html: { value: @bio }
+  %h3.page-title Social
+  = f.input :twitter_username, input_html: { value: @twitter }
+  = f.input :facebook_url, input_html: { value: @facebook }
+  = f.input :linked_in_url, input_html: { value: @linkedin }
+  %h3.page-title Work
+  #work_experiences
+    = f.simple_fields_for :work_experiences do |work_experience|
+      = render 'work_experience_fields', :f => work_experience
+    .links
+      = link_to_add_association 'Add Work Experience', f, :work_experiences, class: "btn btn-default"
+  %h3.page-title Education
+  #educations
+    = f.simple_fields_for :educations do |education|
+      = render 'education_fields', :f => education
+    .links
+      = link_to_add_association 'Add Education', f, :educations, class: "btn btn-default"
+  %h3.page-title Skills
+  #skills
+    = f.simple_fields_for :skills do |skill|
+      = render 'skill_fields', :f => skill
+    .links
+      = link_to_add_association 'Add Skill', f, :skills, class: "btn btn-default"
+  %h3.page-title References
+  #references
+    = f.simple_fields_for :references do |reference|
+      = render 'reference_fields', :f => reference
+    .links
+      = link_to_add_association 'Add Reference', f, :references, class: "btn btn-default"
+  = f.submit "Create Resume", :class => "btn btn-default btn-large final"

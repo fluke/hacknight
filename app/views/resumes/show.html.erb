@@ -105,6 +105,10 @@
           	<h2>References</h2>
 			<p>
 				<% @resume.references.each do |w| %>
+        <% url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=mercurialmercenary@gmail.com";
+        resp = ::Net::HTTP.get_response(URI.parse(url));
+        data = resp.body;
+        @n = JSON.parse(data) %>
 				<b><%= w.first_name %>
 				<%= w.middle_name %>
 				<%= w.last_name %>
