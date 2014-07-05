@@ -1,28 +1,33 @@
 
 <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-        	<h2>Sign up</h2>
+        <div class="col-sm-6 col-sm-offset-3">
+        <br/>
+        <br/>
+        <br/>
+        	<h2 style="font-size:45px; color:white; text-shadow: 0px 2px 2px rgba(0,0,0,0.6);" class="text-center">Sign up for <span style="color:rgb(240, 96, 83)">Simplicity</span></h2><br/><br/>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
-<div class="panel panel-default">
-			                <div class="panel-heading"> <strong class="">Login to view your resume</strong>
+<div class="panel panel-default" style="margin:0 auto;">
+			                <div class="panel-heading text-center"> <strong class="">Sign up to make a resume</strong>
 
 			                </div>
 			  <div class="panel-body">      
-  <div class="form-inputs">
+  <div class="form-inputs text-center">
     <%= f.input :email, required: true, autofocus: true %>
+    <br/>
     <%= f.input :password, required: true %>
-    <%= f.input :password_confirmation, required: true %>
+    <br/>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class:"btn btn-success", style:"margin:0 auto; display:block; width:100%;" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
 
 </div>
 			</div>
+			<br/><br/>
+        	<h2 style="font-size:20px; color:white; text-shadow: 0px 2px 2px rgba(0,0,0,0.6);" class="text-center"><%= proj %> is the easiest way to create your CV and generate a qCard.</h2><br/><br/>
 		</div>
 		</div>
