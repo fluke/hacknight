@@ -12,6 +12,12 @@ class ResumesController < ApplicationController
   # GET /resumes/1
   # GET /resumes/1.json
   def show
+  require 'digest/md5'
+# get the email from URL-parameters or what have you and make lowercase
+email_address = @resume.email.downcase
+# create the md5 hash
+hash = Digest::MD5.hexdigest(email_address)
+@gravatar = "http://www.gravatar.com/avatar/#{hash}"
     render layout: "resume1"
  #@resume.view_count ++
   end
