@@ -14,7 +14,7 @@
           <h4 class="modal-title"><%= w.first_name %> <%= w.last_name %></h4>
         </div>
         <div class="modal-body">
-          <p>Facebook: <%= w.twitter_url %></p>
+          <p>Twitter: <%= w.twitter_url %></p>
           <p>LinkedIN: <%= w.linked_in_url %></p>
         </div>
         <div class="modal-footer">
@@ -54,7 +54,7 @@
             <ul id="education" class="clearfix">
               <% @resume.educations.each do |w| %>	
               <li>
-                <div class="year pull-left">1990</div>
+                <div class="year pull-left" style="text-align:center">*</div>
                 <div class="description pull-right">
                   <h3><%= w.degree %> at <%= w.college %></h3>
                   <p><%= w.start_duration %> - <%= w.end_duration %>
@@ -126,6 +126,7 @@
 			      <p><% @resume.references.each do |w| %>
 				      <a data-toggle="modal" data-target="#<%= w.email.split('@').first %>">
                 <b><%= w.first_name %> <%= w.middle_name %> <%= w.last_name %></b>
+                <br/>
               </a>
 				    <%end%></p>
     </div>

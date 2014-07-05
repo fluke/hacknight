@@ -6,7 +6,11 @@
 </h2>
 
 <h2> Share URL </h2>
-www.qcard.com/resumes/<%= @resume.id %>
+<%if Rails.env.development? %>
+localhost:3000/resumes/<%= @resume.id %>
+<%else %>
+www.vitamincv.com/resumes/<%= @resume.id %>
+<%end%>
 <br/>
 <br/>
 </div>

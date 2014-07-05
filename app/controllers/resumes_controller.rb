@@ -38,8 +38,9 @@ class ResumesController < ApplicationController
   end
 
   respond_to do |format|
-      format.html{render layout: "resume1" }
-      format.xml { render :xml => @resume.to_xml(include: [ :work_experiences, :educations, :references ])}
+      format.html { render layout: "resume1" }
+      format.json { render :json => @resume.to_json(include: [ :work_experiences, :educations, :references, :skills ]) }
+      format.xml { render :xml => @resume.to_xml(include: [ :work_experiences, :educations, :references, :skills ])}
   end
 
 end
@@ -59,11 +60,19 @@ end
 
   def qcard_step2
     @theme = params[:theme]
+    if Rails.env.development?
     @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://localhost:3000/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+  else
+    @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://vitamincv/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+    end
   end
   
   def printcard
+   if Rails.env.development?
     @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://localhost:3000/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+  else
+    @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://vitamincv/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+    end
     render :layout => false
   end
   # GET /resumes/new
