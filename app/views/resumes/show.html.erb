@@ -6,6 +6,7 @@
 <%= stylesheet_link_tag    "cvthemes/print", media: "all" %>
 <%end%>
 
+
 <div class="container">
 	<div class="row">
         <div class="col-xs-12">
@@ -105,9 +106,14 @@
           	<h2>References</h2>
 			<p>
 				<% @resume.references.each do |w| %>
-				<%= w.first_name %>
+        <% url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=mercurialmercenary@gmail.com";
+        resp = ::Net::HTTP.get_response(URI.parse(url));
+        data = resp.body;
+        @n = JSON.parse(data) %>
+				<b><%= w.first_name %>
 				<%= w.middle_name %>
 				<%= w.last_name %>
+        </b>
 				<br/>
 				<%= w.linked_in_url %>
 				<br/>
@@ -127,5 +133,7 @@
 
 
 <div>
+<% if @resume = current_user.resume %>
 <%= render 'proceed_to_card' %>
+<%end %>
 </div>

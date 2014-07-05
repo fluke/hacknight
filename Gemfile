@@ -38,6 +38,7 @@ gem 'cocoon'
 gem 'wicked'
 gem 'simple_form', '>= 3.1.0.rc1'
 gem 'haml'
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

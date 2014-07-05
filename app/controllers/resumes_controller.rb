@@ -48,7 +48,12 @@ hash = Digest::MD5.hexdigest(email_address)
   def new
     @resume = Resume.new
     @resume.user = current_user
-    @resume.view_count = 0
+
+    email_address = @resume.email.downcase
+    # create the md5 hash
+    hash = Digest::MD5.hexdigest(email_address)
+    @gravatar = "http://www.gravatar.com/avatar/#{hash}"
+    
     url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=#{current_user.email}"
     resp = Net::HTTP.get_response(URI.parse(url))
     data = resp.body
@@ -64,6 +69,8 @@ hash = Digest::MD5.hexdigest(email_address)
         @bio = hash["bio"]
       when "facebook"
         @facebook = hash["url"].split('/').last
+      when "linkedin"
+        @linkedin = hash["url"]
       end
     end
   end
@@ -74,12 +81,37 @@ hash = Digest::MD5.hexdigest(email_address)
 
   # GET /resumes/1/edit
   def edit
+    email_address = @resume.email.downcase
+    # create the md5 hash
+    hash = Digest::MD5.hexdigest(email_address)
+    @gravatar = "http://www.gravatar.com/avatar/#{hash}"
+    url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=#{current_user.email}"
+    resp = Net::HTTP.get_response(URI.parse(url))
+    data = resp.body
+    @vibe = JSON.parse(data)
+    @name = @vibe["name"]
+    @bio =  @vibe["bio"]
+    @social = @vibe["social_profiles"]
+    @website = @vibe["websites"][0]["url"]
+    @social.each do |hash|
+      case hash["typeId"]
+      when "twitter"
+        @twitter = hash["username"]
+        @bio = hash["bio"]
+      when "facebook"
+        @facebook = hash["url"].split('/').last
+      when "linkedin"
+        @linkedin = hash["url"]
+      end
+    end
   end
 
   # POST /resumes
   # POST /resumes.json
   def create
     @resume = Resume.new(resume_params)
+    @resume.user = current_user
+    @resume.view_count = 0
 
     respond_to do |format|
       if @resume.save

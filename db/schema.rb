@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140705004255) do
+ActiveRecord::Schema.define(version: 20140705014015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20140705004255) do
     t.string   "twitter_username"
     t.string   "facebook_url"
     t.string   "bio"
+    t.string   "linked_in_url"
   end
 
   create_table "skills", force: true do |t|
