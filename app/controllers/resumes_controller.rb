@@ -49,7 +49,7 @@ hash = Digest::MD5.hexdigest(email_address)
     @resume = Resume.new
     @resume.user = current_user
 
-    email_address = @resume.email.downcase
+    email_address = current_user.email.downcase
     # create the md5 hash
     hash = Digest::MD5.hexdigest(email_address)
     @gravatar = "http://www.gravatar.com/avatar/#{hash}"
@@ -92,7 +92,7 @@ hash = Digest::MD5.hexdigest(email_address)
     @name = @vibe["name"]
     @bio =  @vibe["bio"]
     @social = @vibe["social_profiles"]
-    @website = @vibe["websites"][0]["url"]
+    @website = @vibe["websites"][0]["url"] if @vibe["websites"]
     @social.each do |hash|
       case hash["typeId"]
       when "twitter"
