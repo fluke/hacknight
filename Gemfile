@@ -36,7 +36,7 @@ end
 gem 'devise'
 gem 'cocoon'
 gem 'wicked'
-gem 'simple_form'
+gem 'simple_form', '>= 3.1.0.rc1'
 gem 'haml'
 
 # Use ActiveModel has_secure_password

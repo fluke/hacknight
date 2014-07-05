@@ -42,17 +42,19 @@ class ResumesController < ApplicationController
     resp = Net::HTTP.get_response(URI.parse(url))
     data = resp.body
     @vibe = JSON.parse(data)
-    @bio = @vibe["bio"]
+    @name = "Varun Mayya" #@vibe["name"]
+    @bio = "I eat noodles with my fingers" #@vibe["bio"]
     @social = @vibe["social_profiles"]
-    @social.each do |hash|
-      case hash["typeId"]
-      when "twitter"
-        @twitter = hash["username"]
-        @bio = hash["bio"]
-      when "facebook"
-        @facebook = hash["url"].split('/').last
-      end
-    end
+    @website = "varunmayya.com" #@vibe["websites"][0]["url"]
+    # @social.each do |hash|
+    #   case hash["typeId"]
+    #   when "twitter"
+         @twitter = "VarunMAyya" #hash["username"]
+    #     @bio = hash["bio"]
+    #   when "facebook"
+         @facebook = "neosday" #hash["url"].split('/').last
+    #   end
+    # end
   end
 
   def print

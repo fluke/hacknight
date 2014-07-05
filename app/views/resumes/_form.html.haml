@@ -1,11 +1,11 @@
-= simple_form_for @resume do |f|
+= simple_form_for @resume, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean } do |f|
   %h3 Email
   = f.input :email, input_html: { value: @vibe["email"] }
   %h3 Basic Info
-  = f.input :first_name, input_html: { value: @vibe["name"].split(' ').first }
-  = f.input :middle_name, input_html: { value: @vibe["name"].split(' ').count == 3 ? @vibe["name"].split(' ').second : "" }
-  = f.input :last_name, input_html: { value: @vibe["name"].split(' ').count > 1 ? @vibe["name"].split(' ').last : "" }
-  = f.input :website, input_html: { value: @vibe["websites"][0]["url"] }
+  = f.input :first_name, input_html: { value: @name.split(' ').first }
+  = f.input :middle_name, input_html: { value: @name.split(' ').count == 3 ? @name.split(' ').second : "" }
+  = f.input :last_name, input_html: { value: @name.split(' ').count > 1 ? @name.split(' ').last : "" }
+  = f.input :website, input_html: { value: @website }
   = f.input :phone
   = f.input :bio, input_html: { value: @bio }
   %h3 Social
