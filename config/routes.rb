@@ -1,6 +1,7 @@
 Hacknight::Application.routes.draw do
   get "dashboard/index", as: "dashboard"
   get "vibe/test", as: "test"
+  get "docspad", to:"resumes#docspad", as: "docspad"
   get "/resumes/:id/qcard_step2", to: "resumes#qcard_step2", as: "qcard_step2"
   get "/resumes/:id/qcard", to: "resumes#qcard", as: "qcard_resume"
   get "/resumes/:id/card_print", to: "resumes#printcard", as: "card_print"
