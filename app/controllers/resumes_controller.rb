@@ -64,6 +64,8 @@ hash = Digest::MD5.hexdigest(email_address)
         @bio = hash["bio"]
       when "facebook"
         @facebook = hash["url"].split('/').last
+      when "linkedin"
+        @linkedin = hash["url"]
       end
     end
   end

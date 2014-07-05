@@ -11,6 +11,7 @@
   %h3.page-title Social
   = f.input :twitter_username, input_html: { value: @twitter }
   = f.input :facebook_url, input_html: { value: @facebook }
+  = f.input :linked_in_url, input_html: { value: @linkedin }
   %h3.page-title Work
   #work_experiences
     = f.simple_fields_for :work_experiences do |work_experience|
