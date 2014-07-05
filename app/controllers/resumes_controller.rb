@@ -63,7 +63,7 @@ end
     if Rails.env.development?
     @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://localhost:3000/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
   else
-    @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://vitamincv/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+    @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://vitamincv.com/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
     end
   end
   
@@ -71,7 +71,7 @@ end
    if Rails.env.development?
     @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://localhost:3000/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
   else
-    @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://vitamincv/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
+    @qr = "https://chart.googleapis.com/chart?cht=qr&chl=http://vitamincv.com/resumes/" + "#{@resume.id}" + "&choe=UTF-8&chs=128x128"
     end
     render :layout => false
   end
