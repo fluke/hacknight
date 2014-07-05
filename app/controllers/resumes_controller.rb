@@ -12,14 +12,23 @@ class ResumesController < ApplicationController
   # GET /resumes/1
   # GET /resumes/1.json
   def show
-  require 'digest/md5'
-# get the email from URL-parameters or what have you and make lowercase
-email_address = @resume.email.downcase
-# create the md5 hash
-hash = Digest::MD5.hexdigest(email_address)
-@gravatar = "http://www.gravatar.com/avatar/#{hash}"
+    require 'digest/md5'
+    # get the email from URL-parameters or what have you and make lowercase
+    email_address = @resume.email.downcase
+    # create the md5 hash
+    hash = Digest::MD5.hexdigest(email_address)
+    @gravatar = "http://www.gravatar.com/avatar/#{hash}"
     render layout: "resume1"
- #@resume.view_count ++
+    @resume.view_count += 1
+    logger.info "<<<<<<<<<<<<<<<<<<<<<<<<<<<<< #{@resume.references}"
+    @resume.references.each do |v|
+      url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=#{v.email}"
+      resp = Net::HTTP.get_response(URI.parse(url))
+      data = resp.body
+      @vibe = JSON.parse(data)
+      logger.info "<<<<<<<<<<<<<<<<<<<<<<<<<<<<< #{@vibe}"
+      logger.info "<<<<<<<<<<<<<<<<<<<<<<<<<<<<< #{v}"     
+    end
   end
 
   def docspad
@@ -50,7 +59,6 @@ hash = Digest::MD5.hexdigest(email_address)
     @resume.user = current_user
 
     email_address = current_user.email.downcase
-
     # create the md5 hash
     hash = Digest::MD5.hexdigest(email_address)
     @gravatar = "http://www.gravatar.com/avatar/#{hash}"
@@ -59,9 +67,9 @@ hash = Digest::MD5.hexdigest(email_address)
     resp = Net::HTTP.get_response(URI.parse(url))
     data = resp.body
     @vibe = JSON.parse(data)
-    @name = @vibe["name"] || nil
-    @bio =  @vibe["bio"] || nil
-    @social = @vibe["social_profiles"] || nil
+    @name = @vibe["name"]
+    @bio =  @vibe["bio"]
+    @social = @vibe["social_profiles"]
     @website = @vibe["websites"][0]["url"] if @vibe["websites"]
     @social.each do |hash|
       case hash["typeId"]
@@ -86,25 +94,6 @@ hash = Digest::MD5.hexdigest(email_address)
     # create the md5 hash
     hash = Digest::MD5.hexdigest(email_address)
     @gravatar = "http://www.gravatar.com/avatar/#{hash}"
-    url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=#{current_user.email}"
-    resp = Net::HTTP.get_response(URI.parse(url))
-    data = resp.body
-    @vibe = JSON.parse(data)
-    @name = @vibe["name"]
-    @bio =  @vibe["bio"]
-    @social = @vibe["social_profiles"]
-    @website = @vibe["websites"][0]["url"] if @vibe["websites"]
-    @social.each do |hash|
-      case hash["typeId"]
-      when "twitter"
-        @twitter = hash["username"]
-        @bio = hash["bio"]
-      when "facebook"
-        @facebook = hash["url"].split('/').last
-      when "linkedin"
-        @linkedin = hash["url"]
-      end
-    end
   end
 
   # POST /resumes
@@ -165,6 +154,6 @@ hash = Digest::MD5.hexdigest(email_address)
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resume_params
-      params.require(:resume).permit(:first_name, :middle_name, :last_name, :email, :phone, :website, :theme, :url, :view_count, educations_attributes: [:id, :college, :degree, :start_duration, :end_duration, :description, :_destroy], references_attributes: [:id, :first_name, :middle_name, :last_name, :linked_in_url, :twitter_url, :description, :_destroy], skills_attributes: [:id, :description, :_destroy], work_experiences_attributes: [:id, :company, :position, :start_duration, :end_duration, :description, :_destroy], extra_fields_attributes: [:id, :field_name, :_destroy])
+      params.require(:resume).permit(:first_name, :middle_name, :last_name, :email, :phone, :website, :bio, :twitter_username, :facebook_url, :linked_in_url, :theme, :url, :view_count, educations_attributes: [:id, :college, :degree, :start_duration, :end_duration, :description, :_destroy], references_attributes: [:id, :first_name, :middle_name, :last_name, :email, :linked_in_url, :twitter_url, :description, :_destroy], skills_attributes: [:id, :description, :_destroy], work_experiences_attributes: [:id, :company, :position, :start_duration, :end_duration, :description, :_destroy], extra_fields_attributes: [:id, :field_name, :_destroy])
     end
 end
