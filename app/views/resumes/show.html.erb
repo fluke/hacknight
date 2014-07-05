@@ -11,10 +11,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title">Modal title</h4>
+          <h4 class="modal-title"><%= w.first_name %> <%= w.last_name %></h4>
         </div>
         <div class="modal-body">
-          <p>Name: <%= w.first_name %> <%= w.last_name %></p>
           <p>Facebook: <%= w.twitter_url %></p>
           <p>LinkedIN: <%= w.linked_in_url %></p>
         </div>
@@ -47,7 +46,7 @@
           <!-- ABOUT ME -->
           <div class="box">
             <h2>About Me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, non, dolorem, cumque distinctio magni quam expedita velit laborum sunt amet facere tempora ut fuga aliquam ad asperiores voluptatem dolorum! Quasi.</p>
+            <p><%= @resume.bio %></p>
           </div>
           <!-- EDUCATION -->
           <div class="box">
