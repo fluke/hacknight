@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+a, a:hover, a:link, a:visited {
+	text-decoration: none;
+}
+
 /* New Resume Page
 ================================= */
 
@@ -38,6 +42,17 @@ div.new-resume-form {
 	.btn {
 		width: auto;
 		font-size: 0.9em;
+	}
+	.final {
+		font-size: 1.1em;
+		background-color: #5cb85c;
+		color: #fff;
+		border:none;
+		font-family: 'Montserrat', sans-serif;
+	}
+	.remove {
+		border-color: #d9534f;
+		color: #d9534f;
 	}
 }
 
@@ -157,33 +172,23 @@ body{
 	margin-right: 10px;
 	padding: 12px 22px;
 }
-.btn-default:hover {
-	background-color: #fff;
-	color: #957bba;
-	border-color: #fff;
-}
 .btn:active {
 	box-shadow: none;
 }
 .panel .btn-default:hover {
-	background-color: #ccc;
-	color: #f7f7f7;
 	border-color: #ccc;
 }
 .btn-success {
-
 	padding: 15px 0;
 	text-shadow: 0 1px 1px rgba(0,0,0,.3);
 	box-shadow: 0 3px 0 #23812f;
 }
-
-.btn
-{
-	
+.btn {
 	font-size: 1.5em;
 	width: 230px;
 	margin-bottom:20px;
 }
+
 /* Jumbotron
 ================================= */
 
