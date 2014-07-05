@@ -11,12 +11,18 @@
     			  <div class="container">
      			   <a class="main-logo pull-left" href="#">TableDivide</a>
       				  <ul class="navbar-text pull-right hidden-xs">
-        				<li><a href='#'>DEMO</a></li>
         				<li><a href='#'>
         					<% if user_signed_in? %>
-							<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>     
+        												<%= link_to('Dashboard', dashboard_path) %>     
+							<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+
+
 							<%else %>
-							 <%= link_to('Login',new_user_session_path) %>   
+							 <%= link_to('Login',new_user_session_path) %> 
+							 &nbsp;
+							 &nbsp;
+							 <%= link_to('Sign up',new_user_registration_path) %> 
+
 							<%end%>
         				</a></li>
         			  </ul>  

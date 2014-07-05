@@ -1,28 +1,37 @@
 
 
 <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-        	<h2>Sign in</h2>
+        <div class="col-sm-6 col-sm-offset-3">
+        <br/>
+        <br/>
+        <br/>
+        	<h2 style="font-size:45px; color:white; text-shadow: 0px 2px 2px rgba(0,0,0,0.6);" class="text-center">Sign in to the CV machine <span style="color:rgb(240, 96, 83)">of the future</span></h2><br/><br/>
 			<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-			<div class="panel panel-default">
-			                <div class="panel-heading"> <strong class="">Login to view your resume</strong>
+			<div class="panel panel-default" style="margin:0 auto;">
+			                <div class="panel-heading text-center"> <strong >Login to view your resume</strong>
 
 			                </div>
 			  <div class="panel-body">              
-				  <div class="form-inputs">
+				  <div class="form-inputs text-center">
 				    <%= f.input :email, required: false, autofocus: true, style: "text-align:center" %>
+                    <br/>
 				    <%= f.input :password, required: false %>
-				    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                    <br/>
 				  </div>
 
 				  <div class="form-actions">
-				    <%= f.button :submit, "Sign in" %>
+				    <%= f.button :submit, "Sign in", class:"btn btn-success", style:"margin:0 auto; display:block; width:100%;" %>
+
 				  </div>
 				<% end %>
-
-				<%= render "devise/shared/links" %>
+                <br/>
+                 <div class="text-center">
+                <%= link_to("Don't have an account? Sign up for free!", new_user_registration_path, style:"color:gray;") %>
+                </div>
 				</div>
-			</div>
+
+			</div><br/>
+
 		</div>
 </div>
 
@@ -71,5 +80,3 @@
 </div>-->
 
 
-
-<%= render "devise/shared/links" %>
