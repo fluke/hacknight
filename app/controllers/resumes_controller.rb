@@ -12,8 +12,17 @@ class ResumesController < ApplicationController
   # GET /resumes/1
   # GET /resumes/1.json
   def show
+  require 'digest/md5'
+# get the email from URL-parameters or what have you and make lowercase
+email_address = @resume.email.downcase
+# create the md5 hash
+hash = Digest::MD5.hexdigest(email_address)
+@gravatar = "http://www.gravatar.com/avatar/#{hash}"
     render layout: "resume1"
  #@resume.view_count ++
+  end
+
+  def docspad
   end
   
   def qcard
@@ -38,7 +47,9 @@ class ResumesController < ApplicationController
   # GET /resumes/new
   def new
     @resume = Resume.new
-    url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=#{current_user.email}"
+    @resume.user = current_user
+    @resume.view_count = 0
+    url = "http://vibeapp.co/api/v1/initial_data/?api_key=76afbf61d32bb6e035aa96407cfe7389&email=#{current_user.email}"
     resp = Net::HTTP.get_response(URI.parse(url))
     data = resp.body
     @vibe = JSON.parse(data)
@@ -69,8 +80,7 @@ class ResumesController < ApplicationController
   # POST /resumes.json
   def create
     @resume = Resume.new(resume_params)
-    @resume.user = current_user
-    @resume.view_count = 0
+
     respond_to do |format|
       if @resume.save
         format.html { redirect_to @resume, notice: 'Resume was successfully created.' }
