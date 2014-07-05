@@ -1,15 +1,23 @@
 <br/> <h1 class="text-center">Available qCard themes</h1>
 
+<div class="container">
+<div class="row">
+	<div class="col-md-6">
+		<%= image_tag "cardpreview.jpg", style: "margin:10 auto; height: 300px; width:420px; margin-bottom:40px" %>
+	</div>
+	
+	<div class="col-md-6">	
+			<div class="pad">
+			<h1 class="text-center">Create my qCard</h1>
 
-<div class="pad" style="margin-top:140px;">
-<h1 class="text-center">Create my qCard</h1>
 
-<h2 class="text-center">Choose a theme</h2>
+		<h2 class="text-center">Choose a theme</h2>
 
-
-<%= form_tag qcard_step2_path , :method => 'get', :id => "gs" do %>
-<%= select_tag "theme", "<option>Bold</option><option>Classy</option>".html_safe, name: "theme", style:"width:80%; margin:0 auto; display:block; height:30px;" %>
-<br/>
-<%= submit_tag "Go!", class:"btn btn-primary", style:"width:80%; text-align:center; margin:0 auto; display:block;" %>
-<% end %>
+		<%= form_tag qcard_step2_path , :method => 'get', :id => "gs" do %>
+		<%= select_tag "theme", "<option>Bold</option><option>Classy</option>".html_safe, name: "theme", style:"width:80%; margin:0 auto; display:block; height:30px;" %>
+		<br/>
+		<%= submit_tag "Go!", class:"btn btn-primary", style:"width:80%; text-align:center; margin:0 auto; display:block;" %>
+		<% end %>
+	</div>
+</div>	
 </div>
