@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-<div class = "<%= params[:classof] %>", style = "width:300px; background-color:white; padding:10px; margin:0 auto; height:190px;">
+<div class = "<%= params[:classof] %>", style = "border:1px dashed lightgrey; width:300px; background-color:white; padding:10px; margin:0 auto; height:190px;">
 <h3>
 <span style = "font-size:14px; width:100%; display:block; text-align:center;"><b>
 <br/>
@@ -18,7 +18,7 @@
 </p>
 
 </div>
-<div class = "<%= params[:classof] %>", style = "width:300px; background-color:white; padding:10px; margin:0 auto; height:190px;">
+<div class = "<%= params[:classof] %>", style = "border:1px dashed lightgrey; width:300px; background-color:white; padding:10px; margin:0 auto; height:190px;">
 <%=image_tag @qr, style:"margin:7px auto 0px auto; display:block;" %>
 
 <span style = "font-size:10px; width:100%; display:block; text-align:center;"><b>SCAN THE QR CODE TO VIEW MY CV</b></span>
