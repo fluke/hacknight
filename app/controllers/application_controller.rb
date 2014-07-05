@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
   
   def proj
-  	"Project"
+  	"VitaminCV"
   end
 
   helper_method :proj
