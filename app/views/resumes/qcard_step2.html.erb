@@ -1,20 +1,27 @@
-
-
 <br/>
 
 <br/>
+
+<% classof = "card " + "#{@theme}" %>
+
 <div class="pad larger-pad" style="padding-bottom:20px;">
 <h1 class="text-center"> Front </h1>
-<div class ="card ", style = "width:300px; border:1px solid #c0c0c0; padding:10px; margin:0 auto; height:190px;">
+<div class = "<%= classof %>", style = "width:300px; border:1px solid #c0c0c0; padding:10px; margin:0 auto; height:190px;">
 <h3>
-<%= @resume.first_name %>  <%= @resume.middle_name %> <%= @resume.last_name %>
+<span style = "font-size:14px; width:100%; display:block; text-align:center;"><b>
+<br/>
+<%= @resume.first_name %>  <%= @resume.middle_name %> <%= @resume.last_name %></b></span>
 </h3>
 <p>
+
+<br/>
+<span style = "font-size:14px; width:100%; display:block; text-align:center;">
 <%= @resume.email %>
 <br/>
 <%= @resume.phone %>
 <br/>
 <%= @resume.website %>
+</span>
 <br/>
 </p>
 </div>
@@ -22,13 +29,14 @@
 <br/>
 <div class="pad larger-pad" style="padding-bottom:20px;">
 <h1 class="text-center"> Back </h1>
-<div class ="card", style = "width:300px; border:1px solid #c0c0c0; padding:10px; margin:0 auto; height:190px;">
-<%=image_tag @qr, style:"margin:20px auto 0px auto; display:block;" %>
-<br/>
+<div  class = "<%= classof %>", style = "width:300px; border:1px solid #c0c0c0; padding:10px; margin:0 auto; height:190px;">
+<%=image_tag @qr, style:"margin:7px auto 0px auto; display:block;" %>
+
+<span style = "font-size:10px; width:100%; display:block; text-align:center;"><b>SCAN THE QR CODE TO VIEW MY CV</b></span>
 </div>
 </div>
 <br/>
 <br/>
- <%= link_to "Okay, print me!", card_print_path(@resume), class:"btn btn-success text-center center-block" %>
+ <%= link_to "Okay, print me!", card_print_path(@resume, :classof => "#{classof}"), class:"btn btn-success text-center center-block" %>
  <br/>
  <br/>
