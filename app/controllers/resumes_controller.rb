@@ -18,7 +18,7 @@ class ResumesController < ApplicationController
     # create the md5 hash
     hash = Digest::MD5.hexdigest(email_address)
     @gravatar = "http://www.gravatar.com/avatar/#{hash}"
-    render layout: "resume1"
+    
     @resume.view_count += 1
     @resume.references.each do |v|
       url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=#{v.email}"
@@ -36,6 +36,12 @@ class ResumesController < ApplicationController
        v.save
     end
   end
+
+  respond_to do |format|
+      format.html{render layout: "resume1" }
+      format.xml { render :xml => @resume.to_xml(include: [ :work_experiences, :educations, :references ])}
+  end
+
 end
 
   def docspad
