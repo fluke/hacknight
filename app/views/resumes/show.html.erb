@@ -102,11 +102,12 @@
             </div>
             <div class="contact-item">
               <div class="icon pull-left text-center"><span class="fa fa-twitter fa-fw"></span></div>
-              <div class="title only pull-right"><a href="https://twitter.com/WordPress">Twitter</a></div>
+              <% tw = "http://twitter.com/" + "#{@resume.twitter_username}" %>
+              <div class="title only pull-right"><a href=" <%= tw%>"> Twitter</a></div>
             </div>
             <div class="contact-item">
               <div class="icon pull-left text-center"><span class="fa fa-facebook fa-fw"></span></div>
-              <div class="title only pull-right"><a href="https://in.linkedin.com/abhinavchhikara">LinkedIn</a></div>
+              <div class="title only pull-right"><a href="<%= @resume.linked_in_url%>"> LinkedIn</a></div>
             </div>
           </div>
 
