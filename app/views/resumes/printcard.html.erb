@@ -1,21 +1,29 @@
 <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-<div class ="card", style = "width:300px; background-color:white; padding:10px; margin:0 auto; height:190px;">
+<div class = "<%= params[:classof] %>", style = "width:300px; background-color:white; padding:10px; margin:0 auto; height:190px;">
 <h3>
+<span style = "font-size:14px; width:100%; display:block; text-align:center;"><b>
+<br/>
 <%= @resume.first_name %>  <%= @resume.middle_name %> <%= @resume.last_name %>
 </h3>
 <p>
+<br/>
+<span style = "font-size:14px; width:100%; display:block; text-align:center;">
 <%= @resume.email %>
 <br/>
 <%= @resume.phone %>
 <br/>
 <%= @resume.website %>
+</span>
 <br/>
 </p>
+
 </div>
-<div class ="card", style = "background-color:white; width:300px; padding:10px; margin:0 auto; height:190px;">
+<div class = "<%= params[:classof] %>", style = "width:300px; background-color:white; padding:10px; margin:0 auto; height:190px;">
+<%=image_tag @qr, style:"margin:7px auto 0px auto; display:block;" %>
 
-<%=image_tag @qr, style:"margin:20px auto 0px auto; display:block;" %>
-
+<span style = "font-size:10px; width:100%; display:block; text-align:center;"><b>SCAN THE QR CODE TO VIEW MY CV</b></span>
+</div>
+</div>
 <br/>
 </p>
 </div>

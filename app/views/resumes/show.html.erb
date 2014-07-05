@@ -105,9 +105,10 @@
           	<h2>References</h2>
 			<p>
 				<% @resume.references.each do |w| %>
-				<%= w.first_name %>
+				<b><%= w.first_name %>
 				<%= w.middle_name %>
 				<%= w.last_name %>
+        </b>
 				<br/>
 				<%= w.linked_in_url %>
 				<br/>
@@ -127,5 +128,7 @@
 
 
 <div>
+<% if @resume = current_user.resume %>
 <%= render 'proceed_to_card' %>
+<%end %>
 </div>
