@@ -38,23 +38,23 @@ class ResumesController < ApplicationController
   # GET /resumes/new
   def new
     @resume = Resume.new
-    url = "http://vibeapp.co/api/v1/initial_data/?api_key=76afbf61d32bb6e035aa96407cfe7389&email=#{current_user.email}"
+    url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=#{current_user.email}"
     resp = Net::HTTP.get_response(URI.parse(url))
     data = resp.body
     @vibe = JSON.parse(data)
-    @name = "Varun Mayya" #@vibe["name"]
-    @bio = "I eat noodles with my fingers" #@vibe["bio"]
+    @name = @vibe["name"]
+    @bio =  @vibe["bio"]
     @social = @vibe["social_profiles"]
-    @website = "varunmayya.com" #@vibe["websites"][0]["url"]
-    # @social.each do |hash|
-    #   case hash["typeId"]
-    #   when "twitter"
-         @twitter = "VarunMAyya" #hash["username"]
-    #     @bio = hash["bio"]
-    #   when "facebook"
-         @facebook = "neosday" #hash["url"].split('/').last
-    #   end
-    # end
+    @website = @vibe["websites"][0]["url"]
+    @social.each do |hash|
+      case hash["typeId"]
+      when "twitter"
+        @twitter = hash["username"]
+        @bio = hash["bio"]
+      when "facebook"
+        @facebook = hash["url"].split('/').last
+      end
+    end
   end
 
   def print
