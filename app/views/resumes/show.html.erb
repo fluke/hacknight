@@ -5,7 +5,7 @@
 <%els if @resume.theme ==3 %>
 <%= stylesheet_link_tag    "cvthemes/print", media: "all" %>
 <%end%>
-<% @array_of_hashes.each do |w| %>
+<% @resume.references.each do |w| %>
   <div id="<%= w.email.split('@').first %>" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -14,9 +14,9 @@
           <h4 class="modal-title">Modal title</h4>
         </div>
         <div class="modal-body">
-          <p>Name: <%= w.name %></p>
-          <p>Facebook: <%= w.facebook %></p>
-          <p>LinkedIN: <%= w.linkedin %></p>
+          <p>Name: <%= w.first_name %> <%= w.last_name %></p>
+          <p>Facebook: <%= w.twitter_url %></p>
+          <p>LinkedIN: <%= w.linked_in_url %></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -121,25 +121,16 @@
           </div>
 
           
-    </div>
-    <div class="box">
+    
+          <div class="box">
           	<h2>References</h2>
-			<p>
-				<% @resume.references.each do |w| %>
-				<a data-toggle="modal" data-target="#<%= w.email.split('@').first %>"><b><%= w.first_name %> <%= w.middle_name %> <%= w.last_name %>
-        </b></a>
-				<br/>
-				<%= w.linked_in_url %>
-				<br/>
-				<%= w.twitter_url %>
-				<br/>
-				<%= w.description %>
-				<br/>
-				<br/>
-				<%end%>
-			</p>
-          </div>
-</div>
+			      <p><% @resume.references.each do |w| %>
+				      <a data-toggle="modal" data-target="#<%= w.email.split('@').first %>">
+                <b><%= w.first_name %> <%= w.middle_name %> <%= w.last_name %></b>
+              </a>
+				    <%end%></p>
+    </div>
+  </div>
 </div>
 
 	

@@ -20,16 +20,23 @@ class ResumesController < ApplicationController
     @gravatar = "http://www.gravatar.com/avatar/#{hash}"
     render layout: "resume1"
     @resume.view_count += 1
-    logger.info "<<<<<<<<<<<<<<<<<<<<<<<<<<<<< #{@resume.references}"
     @resume.references.each do |v|
       url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=#{v.email}"
       resp = Net::HTTP.get_response(URI.parse(url))
       data = resp.body
-      @vibe = JSON.parse(data)
-      logger.info "<<<<<<<<<<<<<<<<<<<<<<<<<<<<< #{@vibe}"
-      logger.info "<<<<<<<<<<<<<<<<<<<<<<<<<<<<< #{v}"     
+      vibe = JSON.parse(data)
+      social = vibe["social_profiles"]
+      social.each do |s|
+       if s["typeId"] == "twitter"
+          v.twitter_url = s["username"]
+       end
+       if s["typeId"] == "linkedin"
+          v.linked_in_url = s["url"]
+      end
+       v.save
     end
   end
+end
 
   def docspad
   end
