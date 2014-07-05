@@ -5,6 +5,26 @@
 <%els if @resume.theme ==3 %>
 <%= stylesheet_link_tag    "cvthemes/print", media: "all" %>
 <%end%>
+<% @array_of_hashes.each do |w| %>
+  <div id="<%= w.email.split('@').first %>" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          <p>Name: <%= w.name %></p>
+          <p>Facebook: <%= w.facebook %></p>
+          <p>LinkedIN: <%= w.linkedin %></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+<% end %>
 
 
 <div class="container">
@@ -106,14 +126,8 @@
           	<h2>References</h2>
 			<p>
 				<% @resume.references.each do |w| %>
-        <% url = "http://vibeapp.co/api/v1/initial_data/?api_key=ed9e62508ef88173d937a1e2284cce50&email=mercurialmercenary@gmail.com";
-        resp = ::Net::HTTP.get_response(URI.parse(url));
-        data = resp.body;
-        @n = JSON.parse(data) %>
-				<b><%= w.first_name %>
-				<%= w.middle_name %>
-				<%= w.last_name %>
-        </b>
+				<a data-toggle="modal" data-target="#<%= w.email.split('@').first %>"><b><%= w.first_name %> <%= w.middle_name %> <%= w.last_name %>
+        </b></a>
 				<br/>
 				<%= w.linked_in_url %>
 				<br/>
