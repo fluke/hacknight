@@ -53,10 +53,10 @@ hash = Digest::MD5.hexdigest(email_address)
     resp = Net::HTTP.get_response(URI.parse(url))
     data = resp.body
     @vibe = JSON.parse(data)
-    @name = @vibe["name"]
-    @bio =  @vibe["bio"]
-    @social = @vibe["social_profiles"]
-    @website = @vibe["websites"][0]["url"]
+    @name = @vibe["name"] || nil
+    @bio =  @vibe["bio"] || nil
+    @social = @vibe["social_profiles"] || nil
+    @website = @vibe["websites"][0]["url"] if @vibe["websites"]
     @social.each do |hash|
       case hash["typeId"]
       when "twitter"
